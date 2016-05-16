@@ -20,21 +20,20 @@ public class ClickToMove : MonoBehaviour {
 		float y = transform.position.y;
 		float z = transform.position.z;
 		bool walk = false;
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.UpArrow)) {
 			walk = true;
-			agent.destination = new Vector3(x,y,z+(agent.radius));
-		}
-		if (Input.GetKey (KeyCode.DownArrow)) {
+			agent.destination = new Vector3 (x, y, z + (agent.radius));
+		} else if (Input.GetKey (KeyCode.DownArrow)) {
 			walk = true;
-			agent.destination = new Vector3(x,y,z-(agent.radius));
-		}
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+			agent.destination = new Vector3 (x, y, z - (agent.radius));
+		} else if (Input.GetKey (KeyCode.LeftArrow)) {
 			walk = true;
-			agent.destination = new Vector3(x-(agent.radius),y,z);
-		}
-		if (Input.GetKey (KeyCode.RightArrow)) {
+			agent.destination = new Vector3 (x - (agent.radius), y, z);
+		} else if (Input.GetKey (KeyCode.RightArrow)) {
 			walk = true;
-			agent.destination = new Vector3(x+(agent.radius),y,z);
+			agent.destination = new Vector3 (x + (agent.radius), y, z);
+		} else {
+			agent.destination = transform.position;
 		}
 		//GetComponent<AstrellaLocomotion> ().shouldWalk = walk;
 	}

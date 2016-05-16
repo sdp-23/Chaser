@@ -36,18 +36,14 @@ public class AstrellaLocomotion : MonoBehaviour {
 			velocity = smoothDeltaPosition / Time.deltaTime;
 
 		shouldWalk = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow);
-		bool shouldRun = velocity.magnitude > 0.7f && agent.remainingDistance > agent.radius && Input.GetKey(KeyCode.R);
+		bool shouldRun = Input.GetKey(KeyCode.R);
 
 		// Update animation parameters
 		anim.SetBool("walk", shouldWalk);
 		anim.SetBool("run", shouldRun);
 		//anim.SetFloat ("velx", velocity.x);
 		//anim.SetFloat ("vely", velocity.y);
-		
-		LookAt lookAt = GetComponent<LookAt> ();
-		if (lookAt)
-			lookAt.lookAtTargetPosition = agent.steeringTarget + transform.forward;
-		
+
 		// Pull character towards agent
 		//		if (worldDeltaPosition.magnitude > agent.radius)
 		//			transform.position = agent.nextPosition - 0.9f*worldDeltaPosition;
