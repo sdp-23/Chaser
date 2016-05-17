@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent (typeof (NavMeshAgent))]
 [RequireComponent (typeof (Animator))]
-public class AstrellaLocomotion : MonoBehaviour {
+public class EthanLocomotion : MonoBehaviour {
 	Animator anim;
 	NavMeshAgent agent;
 	AudioSource aud;
