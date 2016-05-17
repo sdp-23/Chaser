@@ -8,14 +8,17 @@ public class AstrellaLocomotion : MonoBehaviour {
 	NavMeshAgent agent;
 	Vector2 smoothDeltaPosition = Vector2.zero;
 	Vector2 velocity = Vector2.zero;
-	public bool shouldWalk;
+	public float speed;
+
+	const float WALKING_SPEED = 1e+5f;
+	const float RUNNING_SPEED = 1e+15f;
 	void Start ()
 	{
 		anim = GetComponent<Animator> ();
 		agent = this.GetComponent<NavMeshAgent> ();
 		// Don't update position automatically
 		agent.updatePosition = false;
-		shouldWalk = false;
+		speed = WALKING_SPEED;
 	}
 	
 	void Update ()
@@ -35,14 +38,24 @@ public class AstrellaLocomotion : MonoBehaviour {
 		if (Time.deltaTime > 1e-5f)
 			velocity = smoothDeltaPosition / Time.deltaTime;
 
-		shouldWalk = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow);
+		bool shouldMove = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow);
 		bool shouldRun = Input.GetKey(KeyCode.R);
+		bool shouldWalk = false;
 
+		if (shouldRun && shouldMove) {
+			speed = RUNNING_SPEED;
+		} else if (!shouldRun && shouldMove){
+			speed = WALKING_SPEED;
+			shouldWalk = true;
+		}
+		else{
+			speed = 0f;
+		}
+	
 		// Update animation parameters
-		anim.SetBool("walk", shouldWalk);
-		anim.SetBool("run", shouldRun);
-		//anim.SetFloat ("velx", velocity.x);
-		//anim.SetFloat ("vely", velocity.y);
+		anim.SetBool ("move", shouldMove);
+		anim.SetBool ("walk", shouldWalk);
+		anim.SetBool ("run", shouldRun);
 
 		// Pull character towards agent
 		//		if (worldDeltaPosition.magnitude > agent.radius)
