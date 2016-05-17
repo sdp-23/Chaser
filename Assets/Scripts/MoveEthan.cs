@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof (NavMeshAgent))]
-public class ClickToMove : MonoBehaviour {
+public class MoveEthan : MonoBehaviour {
 	RaycastHit hitInfo = new RaycastHit();
 	NavMeshAgent agent;
 
