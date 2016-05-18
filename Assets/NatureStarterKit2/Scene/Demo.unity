@@ -12502,9 +12502,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 319262937}
-  - 114: {fileID: 319262936}
   - 82: {fileID: 319262933}
   - 81: {fileID: 319262934}
+  - 114: {fileID: 319262935}
   m_Layer: 0
   m_Name: Sphere_manager
   m_TagString: Untagged
@@ -12594,7 +12594,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 319262932}
   m_Enabled: 1
---- !u!114 &319262936
+--- !u!114 &319262935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -12602,7 +12602,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 319262932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6ca6c40634d3048b6d093fcafb885c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b69f458691d1844fa2af4b68ab393af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 2038193963}
@@ -12611,8 +12611,8 @@ MonoBehaviour:
   timer: 0
   timer2: 0
   freeze: 0
-  prevWalk: 100000
-  prevRun: 10000000
+  prevWalk: 0
+  prevRun: 0
 --- !u!4 &319262937
 Transform:
   m_ObjectHideFlags: 0

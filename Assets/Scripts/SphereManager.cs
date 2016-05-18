@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
-public class AudioManager : MonoBehaviour {
-
+public class SphereManager : MonoBehaviour {
 	public GameObject sphere;
 	public GameObject ethan;
 	public GameObject horse;
@@ -28,7 +26,7 @@ public class AudioManager : MonoBehaviour {
 			if (sphere.activeInHierarchy == false) {
 				float new_x = Random.Range (-110, 110);
 				float new_z = Random.Range (-110, 110);
-				//sphere.transform.position = new Vector3 (new_x, sphere.transform.position.y, new_z);
+				sphere.transform.position = new Vector3 (new_x, sphere.transform.position.y, new_z);
 				sphere.SetActive(true);
 			}
 		} else if(timer < 5) {
