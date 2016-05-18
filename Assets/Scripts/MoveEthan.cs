@@ -7,7 +7,7 @@ public class MoveEthan : MonoBehaviour {
 	NavMeshAgent agent;
 
 	private float speedDiff = 1.0f;
-
+	public GameObject mainCamera;
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 	}
@@ -29,7 +29,9 @@ public class MoveEthan : MonoBehaviour {
 			else if (Input.GetKey (KeyCode.RightArrow)) {
 						agent.destination = new Vector3 (x + (agent.radius*speedDiff), y, z + (agent.radius*speedDiff));
 			} else {
-				agent.destination = new Vector3 (x, y, z + (agent.radius*speedDiff));
+				//agent.destination = new Vector3 (x+mainCamera.transform.forward.x, y, z + (agent.radius*speedDiff)+mainCamera.transform.forward.z);
+				agent.destination = new Vector3 (x+mainCamera, y, z + (agent.radius*speedDiff));
+
 			}
 		} 
 
