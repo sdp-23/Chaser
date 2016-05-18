@@ -4,11 +4,13 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	public GameObject player;
-
+	AudioSource aud;
 	private Vector3 offset;
 
 	void Start()
 	{
+		aud = GetComponent<AudioSource> ();
+		aud.Play ();
 		offset = transform.position - player.transform.position;
 	}
 

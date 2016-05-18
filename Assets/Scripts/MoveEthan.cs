@@ -1,5 +1,6 @@
 ﻿// ClickToMove.cs
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent (typeof (NavMeshAgent))]
 public class MoveEthan : MonoBehaviour {
@@ -8,8 +9,16 @@ public class MoveEthan : MonoBehaviour {
 
 	private float speedDiff = 1.0f;
 	public GameObject mainCamera;
+	public Text text;
+	public float winCount = 5f;
+	public GameObject horse;
+
+	public bool tense = false;
+	public bool end = false;
+
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
+		text.enabled = false;
 	}
 	void Update () {
 		
@@ -17,7 +26,7 @@ public class MoveEthan : MonoBehaviour {
 		float y = transform.position.y;
 		float z = transform.position.z;
 
-		if (Input.GetKey(KeyCode.R)) {
+		if (Input.GetKey(KeyCode.LeftShift)) {
 			speedDiff = 5.0f;
 		}
 
@@ -69,6 +78,20 @@ public class MoveEthan : MonoBehaviour {
 		} 
 		else {
 			agent.destination = transform.position;
+		}
+		if (Vector3.Distance (transform.position, horse.transform.position) <= 15) {
+			tense = true;
+			text.enabled = true;
+			text.text = "Seconds needed to be near the horse: " + ((int)winCount).ToString ();
+			winCount -= Time.deltaTime;
+			if (winCount <= 0f) {
+				end = true;
+				Time.timeScale = 0;
+			}
+		} else {
+			tense = false;
+			text.enabled = false;
+			winCount = 5f;
 		}
 	}
 }
